@@ -3,6 +3,8 @@ package factories;
 import entities.Book;
 import entities.Borrowing;
 import entities.LibraryObject;
+import entities.Reader;
+import entities.Waiting;
 
 public class LibraryFactory {
 	
@@ -32,9 +34,18 @@ public class LibraryFactory {
 						Boolean.valueOf(content[4])
 					);
 			case "READER":
-				break;
+				return new Reader(
+						Integer.valueOf(content[0]),
+						content[1],
+						content[2]
+					);
 			case "WAITING":
-				break;
+				return new Waiting(
+						Integer.valueOf(content[0]),
+						Integer.valueOf(content[1]),
+						Integer.valueOf(content[2]),
+						Long.valueOf(content[3])
+					);
 			}
 		} catch (Exception e) {
 			System.out.println("Exception on library object creation: " + e.getMessage());
