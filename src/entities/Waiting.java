@@ -1,34 +1,33 @@
 package entities;
 
-public class Waiting implements IEntity {
+public class Waiting extends LibraryObject {
 	
-	private int id;
-	private Reader reader;
-	private Book book;
+	private int reader;
+	private int book;
 	private long timestamp;
 	
-	public Waiting(int id, Reader reader, Book book, long timestamp) {
-		this.id = id;
+	public Waiting(int id, int reader, int book, long timestamp) {
+		super(id);
 		this.reader = reader;
 		this.book = book;
 		this.timestamp = timestamp;
 	}
 
-	@Override
-	public int getId() {
-		return id;
-	}
-
-	public Reader getReader() {
+	public int getReader() {
 		return reader;
 	}
 
-	public Book getBook() {
+	public int getBook() {
 		return book;
 	}
 
 	public long getDate() {
 		return timestamp;
+	}
+
+	@Override
+	public String getName() {
+		return null;
 	}
 
 }

@@ -1,31 +1,25 @@
 package entities;
 
-public class Borrowing implements IEntity {
+public class Borrowing extends LibraryObject {
 	
-	private int id;
-	private Reader reader;
-	private Book book;
+	private int reader;
+	private int book;
 	private long timestamp;
 	private boolean active;
 	
-	public Borrowing(int id, Reader reader, Book book, long timestamp, boolean active) {
-		this.id = id;
+	public Borrowing(int id, int reader, int book, long timestamp, boolean active) {
+		super(id);
 		this.reader = reader;
 		this.book = book;
 		this.timestamp = timestamp;
 		this.setActive(active);
 	}
 
-	@Override
-	public int getId() {
-		return id;
-	}
-
-	public Reader getReader() {
+	public int getReader() {
 		return reader;
 	}
 
-	public Book getBook() {
+	public int getBook() {
 		return book;
 	}
 
@@ -41,4 +35,9 @@ public class Borrowing implements IEntity {
 		this.active = active;
 	}
 
+	@Override
+	public String getName() {
+		return null;
+	}
+	
 }

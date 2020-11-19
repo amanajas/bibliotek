@@ -1,23 +1,18 @@
 package entities;
 
-public class Book implements IEntity {
+public class Book extends LibraryObject {
 	
-	private int id;
 	private String title;
 	private String author;
 	
 	public Book(int id, String title, String author) {
-		this.id = id;
+		super(id);
 		this.setTitle(title);
 		this.setAuthor(author);
 	}
-
+	
 	@Override
-	public int getId() {
-		return id;
-	}
-
-	public String getTitle() {
+	public String getName() {
 		return title;
 	}
 
@@ -32,5 +27,4 @@ public class Book implements IEntity {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-
 }

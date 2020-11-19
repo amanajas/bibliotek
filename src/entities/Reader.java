@@ -1,22 +1,17 @@
 package entities;
 
-public class Reader implements IEntity {
+public class Reader extends LibraryObject {
 
-	private int id;
 	private String name;
 	private String address;
 	
 	public Reader(int id, String name, String address) {
-		this.id = id;
+		super(id);
 		this.setName(name);
 		this.setAddress(address);
 	}
 
 	@Override
-	public int getId() {
-		return id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -33,6 +28,4 @@ public class Reader implements IEntity {
 		this.address = address;
 	}
 	
-	
-
 }
