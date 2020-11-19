@@ -14,11 +14,6 @@ public class Controller implements IController {
 	}
 
 	@Override
-	public void load() {
-		
-	}
-
-	@Override
 	public void add(LibraryObject entity) {
 		this.objects.add(entity);
 	}
