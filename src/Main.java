@@ -26,15 +26,18 @@ public class Main {
 	 * @throws IOException
 	 */
 	public static String printMainScreen() throws IOException {
-		System.out.println("::: Binary Calculator :::");
+		System.out.println("::: Library :::");
 		System.out.println("");
-		System.out.println("A) Binary to decimal");
-		System.out.println("B) Decimal to binary");
-		System.out.println("C) Addition");
-		System.out.println("D) Subtraction");
-		System.out.println("E) Multiplication");
-		System.out.println("F) Division");
-		System.out.println("G) Quit");
+		System.out.println("1) Search for a specific book by title and/or author name");
+		System.out.println("2) List all books by title");
+		System.out.println("3) Search for a specific reader by name and/or ID");
+		System.out.println("4) List all readers by ID order");
+		System.out.println("5) Register that a reader has borrowed a book");
+		System.out.println("6) Add to waiting list");
+		System.out.println("7) Return book");
+		System.out.println("8) Books that were borrowed by user");
+		System.out.println("");
+		System.out.println("Q) Quit");
 		System.out.println("");
         System.out.print("Enter an option: ");
         return read();
@@ -52,20 +55,24 @@ public class Main {
 		        response = printMainScreen();
 		        
 		        switch(response.toUpperCase()) {
-		        case "A":
+		        case "1":
 		        	break;
-		        case "B":
+		        case "2":
 		        	break;
-		        case "C":
+		        case "3":
 		        	break;
-		        case "D":
+		        case "4":
 		        	break;
-		        case "E":
+		        case "5":
 		        	break;
-		        case "F":
+		        case "6":
+		        	break;
+		        case "7":
+		        	break;
+		        case "8":
 		        	break;
 		        }
-			} while (response != null && !response.equalsIgnoreCase("G"));
+			} while (response != null && !response.equalsIgnoreCase("Q"));
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}

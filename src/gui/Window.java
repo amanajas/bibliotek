@@ -9,8 +9,8 @@ public abstract class Window {
     public String getName() {
         return name;
     }
-    
-    public abstract void clear();
+        
+    public abstract void show();
     
     public abstract Window copy();
 
