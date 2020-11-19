@@ -1,11 +1,11 @@
 # Algorithms and Constructs
 ## Data Structures and Algorithms
 
-Module Title: Data Structures and Algorithms.
-Assignment Type: Practical Individual Assignment.
-Project Title: Library System.
-Project Date: September 2020.
-Assignment Compiler: Amilcar Aponte.
+- **Module Title**: Data Structures and Algorithms.
+- **Assignment Type**: Practical Individual Assignment.
+- **Project Title**: Library System.
+- **Project Date**: September 2020.
+- **Assignment Compiler**: Amilcar Aponte.
 
 ### Module Learning Outcomes Assessed
 - Develop and implement custom data structures and algorithms for a wide variety of application specific tasks, taking performance and system resources into consideration.
