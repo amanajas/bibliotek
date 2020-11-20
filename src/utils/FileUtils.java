@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileUtils {
@@ -14,14 +15,14 @@ public class FileUtils {
 	 * @param path
 	 * @return
 	 */
-	public static List<String[]> loadCSV(String path) {
+	public static List<List<String>> loadCSV(String path) {
 		BufferedReader csvReader = null;
-		List<String[]> content = new ArrayList<>();
+		List<List<String>> content = new ArrayList<>();
 		try {
 			csvReader = new BufferedReader(new FileReader(path));
 			String row = "";
 			while ((row = csvReader.readLine()) != null) {
-			    String[] data = row.split(",");
+			    List<String> data = Arrays.asList(row.split(","));
 			    content.add(data);
 			}
 		} catch (IOException e) {
@@ -44,18 +45,11 @@ public class FileUtils {
 	 * @param head
 	 * @param content
 	 */
-	public static void saveCSV(String path, String[] head, List<String[]> content) {
+	public static void saveCSV(String path, List<List<String>> content) {
 		FileWriter csvWriter = null;
 		try {
 			csvWriter = new FileWriter(path);
-			
-			for (int i = 0; i < head.length; i ++) {
-				String column = head[i];
-				csvWriter.append(column);
-				csvWriter.append(",");
-			}
-			csvWriter.append("\n");
-			for (String[] rowData : content) {
+			for (List<String> rowData : content) {
 			    csvWriter.append(String.join(",", rowData));
 			    csvWriter.append("\n");
 			}

@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 public abstract class LibraryObject implements IEntity {
 	
 	private int id;
@@ -19,5 +21,7 @@ public abstract class LibraryObject implements IEntity {
 	}
 	
 	public abstract String getName();
+	
+	public abstract List<String> asList();
 
 }

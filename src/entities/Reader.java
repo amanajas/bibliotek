@@ -1,5 +1,10 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import factories.LibraryFactory;
+
 public class Reader extends LibraryObject {
 
 	private String name;
@@ -26,6 +31,16 @@ public class Reader extends LibraryObject {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Override
+	public List<String> asList() {
+		List<String> content = new ArrayList<>();
+		content.add(LibraryFactory.Type.READER.toString());
+		content.add(String.valueOf(getId()));
+		content.add(getName());
+		content.add(getAddress());
+		return content;
 	}
 	
 }

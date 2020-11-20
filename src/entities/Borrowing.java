@@ -1,5 +1,10 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import factories.LibraryFactory;
+
 public class Borrowing extends LibraryObject {
 	
 	private int reader;
@@ -38,6 +43,18 @@ public class Borrowing extends LibraryObject {
 	@Override
 	public String getName() {
 		return null;
+	}
+
+	@Override
+	public List<String> asList() {
+		List<String> content = new ArrayList<>();
+		content.add(LibraryFactory.Type.BORROWING.toString());
+		content.add(String.valueOf(getId()));
+		content.add(String.valueOf(getReader()));
+		content.add(String.valueOf(getBook()));
+		content.add(String.valueOf(getDate()));
+		content.add(String.valueOf(isActive()));
+		return content;
 	}
 	
 }

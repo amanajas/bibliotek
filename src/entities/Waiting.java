@@ -1,5 +1,10 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import factories.LibraryFactory;
+
 public class Waiting extends LibraryObject {
 	
 	private int reader;
@@ -28,6 +33,17 @@ public class Waiting extends LibraryObject {
 	@Override
 	public String getName() {
 		return null;
+	}
+
+	@Override
+	public List<String> asList() {
+		List<String> content = new ArrayList<>();
+		content.add(LibraryFactory.Type.WAITING.toString());
+		content.add(String.valueOf(getId()));
+		content.add(String.valueOf(getReader()));
+		content.add(String.valueOf(getBook()));
+		content.add(String.valueOf(getDate()));
+		return content;
 	}
 
 }

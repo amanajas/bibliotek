@@ -1,5 +1,7 @@
 package factories;
 
+import java.util.List;
+
 import entities.Book;
 import entities.Borrowing;
 import entities.LibraryObject;
@@ -8,43 +10,55 @@ import entities.Waiting;
 
 public class LibraryFactory {
 	
-	enum Type {
+	/**
+	 * 
+	 * Type of entities
+	 *
+	 */
+	public static enum Type {
 		BOOK,
 		BORROWING,
 		READER,
 		WAITING
 	}
 
-	public LibraryObject create(Type type, String[] content) {
+	/**
+	 * Getting text lines to entities
+	 * @param type
+	 * @param content
+	 * @return
+	 */
+	public static LibraryObject create(List<String> content) {
 		
 		try {
+			Type type = LibraryFactory.Type.valueOf(content.get(0));
 			switch(type.name()) {
 			case "BOOK":
 				return new Book(
-						Integer.valueOf(content[0]),
-						content[1],
-						content[2]
+						Integer.valueOf(content.get(1)),
+						String.valueOf(content.get(2)),
+						String.valueOf(content.get(3))
 					);
 			case "BORROWING":
 				return new Borrowing(
-						Integer.valueOf(content[0]),
-						Integer.valueOf(content[1]),
-						Integer.valueOf(content[2]),
-						Long.valueOf(content[3]),
-						Boolean.valueOf(content[4])
+						Integer.valueOf(content.get(1)),
+						Integer.valueOf(content.get(2)),
+						Integer.valueOf(content.get(3)),
+						Long.valueOf(content.get(4)),
+						Boolean.valueOf(content.get(5))
 					);
 			case "READER":
 				return new Reader(
-						Integer.valueOf(content[0]),
-						content[1],
-						content[2]
+						Integer.valueOf(content.get(1)),
+						String.valueOf(content.get(2)),
+						String.valueOf(content.get(3))
 					);
 			case "WAITING":
 				return new Waiting(
-						Integer.valueOf(content[0]),
-						Integer.valueOf(content[1]),
-						Integer.valueOf(content[2]),
-						Long.valueOf(content[3])
+						Integer.valueOf(content.get(1)),
+						Integer.valueOf(content.get(2)),
+						Integer.valueOf(content.get(3)),
+						Long.valueOf(content.get(4))
 					);
 			}
 		} catch (Exception e) {

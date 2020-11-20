@@ -1,5 +1,10 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import factories.LibraryFactory;
+
 public class Book extends LibraryObject {
 	
 	private String title;
@@ -26,5 +31,15 @@ public class Book extends LibraryObject {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	@Override
+	public List<String> asList() {
+		List<String> content = new ArrayList<>();
+		content.add(LibraryFactory.Type.BOOK.toString());
+		content.add(String.valueOf(getId()));
+		content.add(String.valueOf(getName()));
+		content.add(String.valueOf(getAuthor()));
+		return content;
 	}
 }
