@@ -4,14 +4,14 @@ import java.util.List;
 
 public abstract class LibraryObject implements IEntity {
 	
-	private int id;
+	private Integer id;
 	
-	public LibraryObject(int id) {
+	public LibraryObject(Integer id) {
 		this.id = id;
 	}
 
 	@Override
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

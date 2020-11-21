@@ -2,12 +2,12 @@ package controllers;
 
 import java.util.List;
 
-import entities.LibraryObject;
+import entities.IEntity;
 
 public interface IController {
 	
 	void load();
-	void add(LibraryObject entity);
-	void remove(int id);
-	List<LibraryObject> list();
+	void add(IEntity entity);
+	void remove(Integer id);
+	List<IEntity> list();
 }

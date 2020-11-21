@@ -10,7 +10,7 @@ public class Reader extends LibraryObject {
 	private String name;
 	private String address;
 	
-	public Reader(int id, String name, String address) {
+	public Reader(Integer id, String name, String address) {
 		super(id);
 		this.setName(name);
 		this.setAddress(address);
@@ -41,6 +41,11 @@ public class Reader extends LibraryObject {
 		content.add(getName());
 		content.add(getAddress());
 		return content;
+	}
+
+	@Override
+	public int compareTo(IEntity o) {
+		return this.getId().compareTo(o.getId());
 	}
 	
 }

@@ -7,22 +7,22 @@ import factories.LibraryFactory;
 
 public class Waiting extends LibraryObject {
 	
-	private int reader;
-	private int book;
+	private Integer reader;
+	private Integer book;
 	private long timestamp;
 	
-	public Waiting(int id, int reader, int book, long timestamp) {
+	public Waiting(Integer id, Integer reader, Integer book, long timestamp) {
 		super(id);
 		this.reader = reader;
 		this.book = book;
 		this.timestamp = timestamp;
 	}
 
-	public int getReader() {
+	public Integer getReader() {
 		return reader;
 	}
 
-	public int getBook() {
+	public Integer getBook() {
 		return book;
 	}
 
@@ -44,6 +44,11 @@ public class Waiting extends LibraryObject {
 		content.add(String.valueOf(getBook()));
 		content.add(String.valueOf(getDate()));
 		return content;
+	}
+
+	@Override
+	public int compareTo(IEntity o) {
+		return this.getId().compareTo(o.getId());
 	}
 
 }

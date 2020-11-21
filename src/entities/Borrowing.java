@@ -7,12 +7,12 @@ import factories.LibraryFactory;
 
 public class Borrowing extends LibraryObject {
 	
-	private int reader;
-	private int book;
+	private Integer reader;
+	private Integer book;
 	private long timestamp;
 	private boolean active;
 	
-	public Borrowing(int id, int reader, int book, long timestamp, boolean active) {
+	public Borrowing(Integer id, Integer reader, Integer book, long timestamp, boolean active) {
 		super(id);
 		this.reader = reader;
 		this.book = book;
@@ -20,11 +20,11 @@ public class Borrowing extends LibraryObject {
 		this.setActive(active);
 	}
 
-	public int getReader() {
+	public Integer getReader() {
 		return reader;
 	}
 
-	public int getBook() {
+	public Integer getBook() {
 		return book;
 	}
 
@@ -55,6 +55,11 @@ public class Borrowing extends LibraryObject {
 		content.add(String.valueOf(getDate()));
 		content.add(String.valueOf(isActive()));
 		return content;
+	}
+
+	@Override
+	public int compareTo(IEntity o) {
+		return this.getId().compareTo(o.getId());
 	}
 	
 }

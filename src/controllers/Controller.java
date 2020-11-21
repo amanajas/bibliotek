@@ -3,13 +3,14 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import entities.IEntity;
 import entities.LibraryObject;
 import factories.LibraryFactory;
 import utils.FileUtils;
 
 public class Controller implements IController {
 	
-	private List<LibraryObject> objects;
+	private List<IEntity> objects;
 	private String path;
 	
 	public Controller(String path) {
@@ -19,26 +20,29 @@ public class Controller implements IController {
 	
 
 	@Override
-	public void add(LibraryObject entity) {
+	public void add(IEntity entity) {
 		this.objects.add(entity);
 		this.saveList();
 	}
 
 	@Override
-	public void remove(int id) {
-		this.objects.removeIf(t -> t.getId() == id);
+	public void remove(Integer id) {
+		this.objects.removeIf(t -> t.getId().equals(id));
 		this.saveList();
 	}
 
 	@Override
-	public List<LibraryObject> list() {
+	public List<IEntity> list() {
 		return this.objects;
 	}
 	
+	/**
+	 * Save list in a file
+	 */
 	private void saveList() {
 		List<List<String>> content = new ArrayList<>();
-		for (LibraryObject libo : objects) {
-			content.add(libo.asList());
+		for (IEntity libo : objects) {
+			content.add(((LibraryObject)libo).asList());
 		}
 		FileUtils.saveCSV(path, content);
 	}

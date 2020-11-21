@@ -10,7 +10,7 @@ public class Book extends LibraryObject {
 	private String title;
 	private String author;
 	
-	public Book(int id, String title, String author) {
+	public Book(Integer id, String title, String author) {
 		super(id);
 		this.setTitle(title);
 		this.setAuthor(author);
@@ -41,5 +41,10 @@ public class Book extends LibraryObject {
 		content.add(String.valueOf(getName()));
 		content.add(String.valueOf(getAuthor()));
 		return content;
+	}
+
+	@Override
+	public int compareTo(IEntity o) {
+		return this.getId().compareTo(o.getId());
 	}
 }
