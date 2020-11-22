@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class Window {
@@ -12,7 +13,7 @@ public abstract class Window {
         return name;
     }
         
-    public abstract String show();
+    public abstract void show();
     public abstract String search();
     public abstract String register();
 
@@ -30,5 +31,17 @@ public abstract class Window {
 			System.out.println(e.getMessage());
 		}
         return word;
+	}
+	
+	// Wait for input
+	public void waitForKey() {
+		System.out.println("");
+		System.out.println("Press any key to continue");
+		System.out.println("");
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			// No warning
+		}
 	}
 }

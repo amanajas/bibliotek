@@ -1,5 +1,9 @@
 import java.io.IOException;
 
+import gui.BookWindow;
+import gui.BorrowWindow;
+import gui.ReaderWindow;
+import gui.WaitingWindow;
 import gui.Window;
 
 public class Main {
@@ -16,12 +20,11 @@ public class Main {
 		System.out.println("3) Readers");
 		System.out.println("5) Borrows list");
 		System.out.println("7) Waiting list");
-		System.out.println("9) Return book");
 		System.out.println("");
 		System.out.println("Q) Quit");
 		System.out.println("");
-        System.out.print("Enter an option: ");
-        return Window.read();
+		System.out.print("-> ");
+		return Window.read();
 	}
 
 	/**
@@ -30,26 +33,32 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		String response = null;
+		BookWindow bookWindow = new BookWindow();
+		BorrowWindow borrowWindow = new BorrowWindow();
+		WaitingWindow waitWindow = new WaitingWindow();
+		ReaderWindow readerWindow = new ReaderWindow();
+		
 		try {
+			String mainResponse = null;
 			do {
-		        response = printMainScreen();
-		        
-		        switch(response.toUpperCase()) {
+		        mainResponse = printMainScreen();
+		        switch(mainResponse.toUpperCase()) {
 		        case "1":
+		        	bookWindow.show();
 		        	break;
 		        case "3":
+		        	readerWindow.show();
 		        	break;
 		        case "5":
+		        	borrowWindow.show();
 		        	break;
 		        case "7":
-		        	break;
-		        case "9":
+		        	waitWindow.show();
 		        	break;
 		        }
-			} while (response != null && !response.equalsIgnoreCase("Q"));
+			} while (mainResponse != null && !mainResponse.equalsIgnoreCase("Q"));
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			System.err.println("Error: " + e.getMessage());
 		}
 	}
 
