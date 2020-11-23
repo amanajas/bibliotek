@@ -1,4 +1,24 @@
 # Algorithms and Constructs
+
+## Project structure
+- Controllers 
+  - Serve as data manipulation adding and removing from the lists 
+- Entities 
+  - Objects that represent the data required like readers and books, etc.
+- Factories
+  - Responsible for the creation of the entities
+- GUI
+  - Screen printing for options
+- Utils
+  - Classes accountable for loading and saving files, date format, and number validation
+
+## Code justification
+- Starting from the loading of a file, the Factory creates the objects regarding the type and information. This way, it is easy because it already has all the items in the files before loaded during the program's loading. 
+- The controls make an interface between the lists and the interface, which facilitates the entities' interaction and manipulation.
+
+## File structure
+- The file format is CSV because it is a standard format and works for different programming languages; thus, regardless of which language the program will be, the files will remain useful.
+
 ## Data Structures and Algorithms
 
 - **Module Title**: Data Structures and Algorithms.
