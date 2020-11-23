@@ -3,7 +3,6 @@ package gui;
 import java.util.List;
 
 import controllers.ReaderController;
-import entities.Book;
 import entities.IEntity;
 import entities.Reader;
 
@@ -80,7 +79,7 @@ public class ReaderWindow extends Window {
 						System.out.println("Error: It seems that the information given is imcomplete.");
 						break;
 					} else {
-						controller.add(new Book(controller.getLastId(), words[0], words[1]));
+						controller.add(new Reader(controller.getLastId(), words[0], words[1]));
 						System.out.println("Reader added: " + words[0]);
 					}
 				} else {

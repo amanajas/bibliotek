@@ -10,6 +10,7 @@ import entities.Book;
 import entities.Borrowing;
 import entities.IEntity;
 import entities.Reader;
+import utils.NumberUtils;
 
 public class BorrowWindow extends Window {
 	
@@ -61,28 +62,38 @@ public class BorrowWindow extends Window {
 				break;
 			case "2":
 				System.out.println("-------------------");
-				list = borrowController.searchBorrowedBookReaderByID(Integer.valueOf(response));
-				for (IEntity ent : list) {
-					Borrowing borrow = (Borrowing) ent;
-					Book book = bookController.getBook(borrow.getBook());
-					Reader reader = readerController.searchById(borrow.getReader());
-					System.out.println("Date: " + borrow.getDate());
-					System.out.println("Reader: " + "(" + reader.getId() + ")" + reader.getName());
-					System.out.println("Book: (" + borrow.getBook() + ") " + book.getName());
-					System.out.println();
+				if (NumberUtils.isNumeric(response)) {
+					list = borrowController.searchBorrowedBookReaderByID(Integer.valueOf(response));
+					for (IEntity ent : list) {
+						Borrowing borrow = (Borrowing) ent;
+						Book book = bookController.getBook(borrow.getBook());
+						Reader reader = readerController.searchById(borrow.getReader());
+						System.out.println("Date: " + NumberUtils.getDate(borrow.getDate()).toString());
+						System.out.println("Reader: " + "(" + reader.getId() + ")" + reader.getName());
+						System.out.println("Book: (" + borrow.getBook() + ") " + book.getName());
+						System.out.println();
+					}
+					System.out.println("-------------------");
+				} else {
+					System.out.println("Error: Please enter a correct ID.");
 				}
-				System.out.println("-------------------");
 				waitForKey();
 				break;
 			case "3":
 				System.out.println("-------------------");
-				list = borrowController.searchBorrowedBookByID(Integer.valueOf(response));
-				for (IEntity ent : list) {
-					Borrowing borrow = (Borrowing) ent;
-					Book book = bookController.getBook(borrow.getBook());
-					System.out.println("Date: " + borrow.getDate() + ", Book: (" + borrow.getBook() + ") " + book.getName());
+				if (NumberUtils.isNumeric(response)) {
+					list = borrowController.searchBorrowedBookByID(Integer.valueOf(response));
+					for (IEntity ent : list) {
+						Borrowing borrow = (Borrowing) ent;
+						Book book = bookController.getBook(borrow.getBook());
+						System.out.println("Date: " + NumberUtils.getDate(borrow.getDate()).toString());
+						System.out.println("Book: (" + borrow.getBook() + ") " + book.getName());
+						System.out.println();
+					}
+					System.out.println("-------------------");
+				} else {
+					System.out.println("Error: Please enter a correct ID.");
 				}
-				System.out.println("-------------------");
 				waitForKey();
 				break;
 			case "4":
@@ -94,21 +105,25 @@ public class BorrowWindow extends Window {
 						System.out.println("Error: It seems that the information given is imcomplete.");
 						break;
 					} else {
-						Integer bookId = Integer.valueOf(words[0]);
-						Integer readerId = Integer.valueOf(words[1]);
-						if (bookController.exists(bookId) && readerController.exists(readerId)) {
-							borrowController.add(
-								new Borrowing(
-									borrowController.getLastId(),
-									bookId,
-									readerId,
-									new Date().getTime(),
-									true
-								)
-							);
-							System.out.println("Borrow added for reader: " + words[0]);
+						if (NumberUtils.isNumeric(words[0]) && NumberUtils.isNumeric(words[1])) {
+							Integer bookId = Integer.valueOf(words[0]);
+							Integer readerId = Integer.valueOf(words[1]);
+							if (bookController.exists(bookId) && readerController.exists(readerId)) {
+								borrowController.add(
+									new Borrowing(
+										borrowController.getLastId(),
+										bookId,
+										readerId,
+										new Date().getTime(),
+										true
+									)
+								);
+								System.out.println("Borrow added for reader: " + words[0]);
+							} else {
+								System.out.println("Error: Reader ID or Book ID is not valid.");
+							}
 						} else {
-							System.out.println("Error: Reader ID or Book ID is not valid.");
+							System.out.println("Error: Please enter numbers for the IDs.");
 						}
 					}
 				} else {
