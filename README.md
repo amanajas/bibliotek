@@ -19,7 +19,15 @@
 ## File structure
 - The file format is CSV because it is a standard format and works for different programming languages; thus, regardless of which language the program will be, the files will remain useful.
 
-## Data Structures and Algorithms
+# Before running
+
+> Create in the folliwing files in the root folder:
+- books.csv
+- readers.csv
+- borrows.csv
+- waits.csv
+
+# Data Structures and Algorithms
 
 - **Module Title**: Data Structures and Algorithms.
 - **Assignment Type**: Practical Individual Assignment.
