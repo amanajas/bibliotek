@@ -9,7 +9,7 @@ import entities.Waiting;
 public class WaitController extends Controller {
 
 	public WaitController() {
-		super("wait.csv");
+		super("waits.csv");
 	}
 	
 	public List<IEntity> searchNextReaderByBookID(Integer id) {

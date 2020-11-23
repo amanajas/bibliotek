@@ -10,4 +10,6 @@ public interface IController {
 	void add(IEntity entity);
 	void remove(Integer id);
 	List<IEntity> list();
+	Integer getLastId();
+	boolean exists(Integer id);
 }

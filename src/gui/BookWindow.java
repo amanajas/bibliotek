@@ -13,11 +13,11 @@ public class BookWindow extends Window {
 	public BookWindow() {
 		super("BookWindow");
 		controller = new BookController();
+		controller.load();
 	}
 
 	@Override
 	public void show() {
-		controller.load();
 		String response = "";
 		List<IEntity> list;
 		do {
@@ -38,7 +38,9 @@ public class BookWindow extends Window {
 				list = controller.listAlphabetically();
 				for (IEntity ent : list) {
 					Book book = (Book) ent;
-					System.out.println("ID: " + book.getId() + ", Title: " + book.getName() + ", Author: " + book.getAuthor());
+					System.out.println("ID: " + book.getId() + ", Title: " + book.getName());
+					System.out.println("Author: " + book.getAuthor());
+					System.out.println();
 				}
 				System.out.println("-------------------");
 				waitForKey();
@@ -48,7 +50,9 @@ public class BookWindow extends Window {
 				list = controller.listAlphabetically();
 				for (IEntity ent : list) {
 					Book book = (Book) ent;
-					System.out.println("ID: " + book.getId() + ", Title: " + book.getName() + ", Author: " + book.getAuthor());
+					System.out.println("ID: " + book.getId() + ", Title: " + book.getName());
+					System.out.println("Author: " + book.getAuthor());
+					System.out.println();
 				}
 				System.out.println("-------------------");
 				waitForKey();
@@ -60,7 +64,9 @@ public class BookWindow extends Window {
 				System.out.println("-------------------");
 				for (IEntity ent : list) {
 					Book book = (Book) ent;
-					System.out.println("ID: " + book.getId() + ", Title: " + book.getName() + ", Author: " + book.getAuthor());
+					System.out.println("ID: " + book.getId() + ", Title: " + book.getName());
+					System.out.println("Author: " + book.getAuthor());
+					System.out.println();
 				}
 				System.out.println("-------------------");
 				waitForKey();
@@ -69,12 +75,19 @@ public class BookWindow extends Window {
 				System.out.println("-------------------");
 				String reg = this.register();
 				if (reg.length() > 0 && reg.contains(";")) {
-					// TODO: Generate ID
+					String[] words = reg.split(";");
+					if (words.length < 2) {
+						System.out.println("Error: It seems that the information given is imcomplete.");
+						break;
+					} else {
+						controller.add(new Book(controller.getLastId(), words[0], words[1]));
+						System.out.println("Book added: " + words[0]);
+					}
 				} else {
 					System.out.println("Error: It was not possible to register the book.");
 				}
-				// TODO: Split and add
 				System.out.println("-------------------");
+				waitForKey();
 				break;
 			
 			}

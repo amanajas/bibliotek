@@ -11,14 +11,13 @@ import entities.Reader;
 public class ReaderController extends Controller {
 
 	public ReaderController() {
-		super("reader.csv");
+		super("readers.csv");
 	}
 	
-	public List<IEntity> searchById(Integer id) {
+	public Reader searchById(Integer id) {
 		List<IEntity> lireader = this.list();
-		return lireader.stream()
-			     .filter(item -> ((Reader)item).getId().equals(id))
-			     .collect(Collectors.toList());
+		return (Reader) lireader.stream()
+			     .filter(item -> ((Reader)item).getId().equals(id));
 	}
 	
 	public List<IEntity> searchByName(String name) {

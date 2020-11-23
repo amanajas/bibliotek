@@ -53,5 +53,11 @@ public class BookController extends Controller {
 			     .filter(item -> list.contains(item.getId()))
 			     .collect(Collectors.toList());
 	}
+	
+	public Book getBook(Integer id) {
+		List<IEntity> libook = this.list();
+		return (Book) libook.stream()
+			     .filter(item -> item.getId().equals(id));
+	}
 
 }
