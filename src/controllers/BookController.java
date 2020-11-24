@@ -13,6 +13,10 @@ public class BookController extends Controller {
 		super("books.csv");
 	}
 	
+	public BookController(String filePath) {
+		super(filePath);
+	}
+	
 	public List<IEntity> searchByTitle(String title) {
 		List<IEntity> libook = this.list();
 		return libook.stream()

@@ -14,6 +14,10 @@ public class ReaderController extends Controller {
 		super("readers.csv");
 	}
 	
+	public ReaderController(String filePath) {
+		super(filePath);
+	}
+	
 	public Reader searchById(Integer id) {
 		List<IEntity> lireader = this.list();
 		return (Reader) lireader.stream()

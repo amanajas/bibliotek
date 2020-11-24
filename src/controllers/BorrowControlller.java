@@ -12,6 +12,10 @@ public class BorrowControlller extends Controller {
 		super("borrows.csv");
 	}
 
+	public BorrowControlller(String filePath) {
+		super(filePath);
+	}
+	
 	public List<IEntity> searchBorrowedBookReaderByID(Integer id) {
 		List<IEntity> libook = this.list();
 		return libook.stream()

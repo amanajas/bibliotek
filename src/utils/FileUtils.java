@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,6 +20,12 @@ public class FileUtils {
 		BufferedReader csvReader = null;
 		List<List<String>> content = new ArrayList<>();
 		try {
+			
+			// If file don't exist it creates
+			File yourFile = new File(path);
+			yourFile.createNewFile(); // if file already exists will do nothing
+			
+			// Read the file lines into list
 			csvReader = new BufferedReader(new FileReader(path));
 			String row = "";
 			while ((row = csvReader.readLine()) != null) {

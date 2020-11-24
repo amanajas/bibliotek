@@ -12,6 +12,10 @@ public class WaitController extends Controller {
 		super("waits.csv");
 	}
 	
+	public WaitController(String filePath) {
+		super(filePath);
+	}
+	
 	public List<IEntity> searchNextReaderByBookID(Integer id) {
 		List<IEntity> lireader = this.list();
 		return lireader.stream()
